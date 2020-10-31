@@ -8,11 +8,11 @@ enum node_state {NO_VISITED, OPEN, CLOSED};
 class Node {
     private:
         node_state state;
-        Node* const  next_node_1;
-        Node* const  next_node_2;
-        std::string const value;
+        Node* next_node_1;
+        Node* next_node_2;
+        std::string value;
     public:
-        Node(std::string const value);
+        Node(std::string value);
 
         //Función: 
         void setNextNode(Node* next);

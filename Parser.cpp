@@ -14,8 +14,8 @@ std::string Parser::getNextLine(std::ifstream& file) {
 }
 
 bool Parser::isOneArgumentJump(std::string const line) {
-    bool is_jmp = this->getInstruction(line)[0] == 'j';
-    return (is_jmp && this->getInstructionWords(line) == 2);
+    bool is_jmp = Parser::getInstruction(line)[0] == 'j';
+    return (is_jmp && Parser::getInstructionWords(line) == 2);
 }
 
 bool Parser::hasLabel(std::string const line) {
@@ -27,11 +27,11 @@ bool Parser::hasLabel(std::string const line) {
 }
 
 bool Parser::isConditionalJump(std::string const line) {
-    return (this->getInstructionWords(line) > 2);
+    return (Parser::getInstructionWords(line) > 2);
 }
 
 bool Parser::isReturn(std::string const line) {
-    return (this->getInstruction(line).compare("ret") == 0);
+    return (Parser::getInstruction(line).compare("ret") == 0);
 }
 
 std::string Parser::getInstruction(std::string const line) {
@@ -73,8 +73,8 @@ size_t Parser::getWordCount(std::string const line) {
 }
 
 size_t Parser::getInstructionWords(std::string const line) {
-    size_t count = this->getWordCount(line);
-    if (this->hasLabel(line)) {
+    size_t count = Parser::getWordCount(line);
+    if (Parser::hasLabel(line)) {
         count--;
     }
     return count;
