@@ -68,17 +68,17 @@ void DFSTree::setConnections() {
 
 void DFSTree::step(Node* node) {
 	node->open();
-	if (node->getNext_1() != NULL) {
-		if (node->getNext_1()->unVisited()) {
-			this->step(node->getNext_1());
-		} else if (node->getNext_1()->isOpened()) {
+	if (node->getLeft() != NULL) {
+		if (node->getLeft()->unVisited()) {
+			this->step(node->getLeft());
+		} else if (node->getLeft()->isOpened()) {
 			this->there_is_loop = true;
 		}
 	}
-	if (node->getNext_2() != NULL) {
-		if (node->getNext_2()->unVisited()) {
-			this->step(node->getNext_2());
-		} else if (node->getNext_2()->isOpened()) {
+	if (node->getRight() != NULL) {
+		if (node->getRight()->unVisited()) {
+			this->step(node->getRight());
+		} else if (node->getRight()->isOpened()) {
 			this->there_is_loop = true;
 		}
 	}

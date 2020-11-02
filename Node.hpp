@@ -8,8 +8,8 @@ enum node_state {NO_VISITED, OPEN, CLOSED};
 class Node {
     private:
         node_state state;
-        Node* next_node_1;
-        Node* next_node_2;
+        Node* left;
+        Node* right;
         std::string value;
     public:
         Node(std::string value);
@@ -33,10 +33,10 @@ class Node {
         void close();
         
         //Función: obtiene el primer nodo vecino
-        Node* getNext_1() const;
+        Node* getLeft() const;
         
         //Función: obtiene el segundo nodo vecino
-        Node* getNext_2() const;
+        Node* getRight() const;
         
         //Función: obtiene el contenido de la instrucción
         std::string getValue() const;
