@@ -36,17 +36,11 @@ void Node::close() {
 }
 
 Node* Node::getLeft() const {
-    if (this->left != NULL) {
-        return this->left;
-    }
-    return NULL;
+    return this->left;
 }
 
 Node* Node::getRight() const {
-    if (this->right != NULL) {
-        return this->right;
-    }
-    return NULL;
+    return this->right;
 }
 
 std::string Node::getValue() const {
