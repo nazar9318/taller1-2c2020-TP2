@@ -2,8 +2,6 @@
 #define DFS_TREE_H
 
 #include <vector>
-#include <string>
-#include <fstream>
 #include "Node.hpp"
 #include "Parser.hpp"
 

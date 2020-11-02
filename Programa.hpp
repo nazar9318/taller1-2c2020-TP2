@@ -1,13 +1,6 @@
 #ifndef PROGRAMA_H
 #define PROGRAMA_H
 
-#include <mutex>
-#include <vector>
-#include <thread>
-#include <string>
-#include <stdio.h>
-#include <fstream>
-#include "Thread.hpp"
 #include "Checker.hpp"
 
 class Programa {

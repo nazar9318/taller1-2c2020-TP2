@@ -2,9 +2,6 @@
 #define CHECKER_H
 
 #include <mutex>
-#include <string>
-#include <vector>
-#include <fstream>
 #include "Thread.hpp"
 #include "DFSTree.hpp"
 #include "FileStore.hpp"

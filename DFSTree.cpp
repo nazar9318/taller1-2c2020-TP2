@@ -7,7 +7,7 @@ DFSTree::DFSTree(std::string file_name) {
     while (!file.eof()) {
         std::string new_line = "";
         new_line = Parser::getNextLine(file);
-        if (new_line.size() > 3) {
+        if (new_line.size() > 0) {
             this->nodos.push_back(new Node(new_line));
             i++;
         }

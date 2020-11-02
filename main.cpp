@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <iostream>
 #include "Programa.hpp"
 
 int main(int argc, char* argv[]) {
