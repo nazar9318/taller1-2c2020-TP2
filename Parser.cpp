@@ -13,12 +13,12 @@ std::string Parser::getNextLine(std::ifstream& file) {
     return line;
 }
 
-bool Parser::isOneArgumentJump(std::string const line) {
+bool Parser::isOneArgumentJump(std::string const& line) {
     bool is_jmp = Parser::getInstruction(line)[0] == 'j';
     return (is_jmp && Parser::getInstructionWords(line) == 2);
 }
 
-bool Parser::hasLabel(std::string const line) {
+bool Parser::hasLabel(std::string const& line) {
     std::stringstream iss;
     std::string word = "";
     iss << line;
@@ -26,15 +26,15 @@ bool Parser::hasLabel(std::string const line) {
     return (word.back() == ':');
 }
 
-bool Parser::isConditionalJump(std::string const line) {
+bool Parser::isConditionalJump(std::string const& line) {
     return (Parser::getInstructionWords(line) > 2);
 }
 
-bool Parser::isReturn(std::string const line) {
+bool Parser::isReturn(std::string const& line) {
     return (Parser::getInstruction(line).compare("ret") == 0);
 }
 
-std::string Parser::getInstruction(std::string const line) {
+std::string Parser::getInstruction(std::string const& line) {
     std::stringstream iss;
     std::string word = "";
     iss << line;
@@ -45,7 +45,7 @@ std::string Parser::getInstruction(std::string const line) {
     return word;
 }
 
-std::string Parser::getFirstWord(std::string const line) {
+std::string Parser::getFirstWord(std::string const& line) {
     std::stringstream iss;
     iss << line;
     std::string word = "";
@@ -53,7 +53,7 @@ std::string Parser::getFirstWord(std::string const line) {
     return word;
 }
 
-std::string Parser::getLastWord(std::string const line) {
+std::string Parser::getLastWord(std::string const& line) {
     std::stringstream iss;
     iss << line;
     std::string word = "";
@@ -61,7 +61,7 @@ std::string Parser::getLastWord(std::string const line) {
     return word;
 }
 
-size_t Parser::getWordCount(std::string const line) {
+size_t Parser::getWordCount(std::string const& line) {
     std::stringstream iss;
     size_t word_count = 0;
     iss << line;
@@ -72,7 +72,7 @@ size_t Parser::getWordCount(std::string const line) {
     return word_count;
 }
 
-size_t Parser::getInstructionWords(std::string const line) {
+size_t Parser::getInstructionWords(std::string const& line) {
     size_t count = Parser::getWordCount(line);
     if (Parser::hasLabel(line)) {
         count--;
@@ -80,7 +80,7 @@ size_t Parser::getInstructionWords(std::string const line) {
     return count;
 }
 
-std::string Parser::getNextWord(std::string const line, size_t const ini) {
+std::string Parser::getNextWord(std::string const& line, size_t const ini) {
     std::stringstream iss;
     iss << line;
     std::string word = "";

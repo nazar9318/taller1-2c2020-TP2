@@ -25,7 +25,7 @@ bool DFSTree::allInstructionsUsed() {
     return visited;
 }
 
-Node* DFSTree::findNodeJump(std::string const etiquette) {
+Node* DFSTree::findNodeJump(std::string const& etiquette) {
     std::string label = etiquette;
     label += ":";
     Parser parser;

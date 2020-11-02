@@ -1,6 +1,6 @@
 #include "Node.hpp"
 
-Node::Node(std::string const value) {
+Node::Node(std::string const& value) {
     this->value = value;
     this->state = NO_VISITED;
     this->left = NULL;

@@ -10,7 +10,7 @@ class DFSTree {
         std::vector<Node*> nodos;
         void setConnections();
         void step(Node* node);
-        Node* findNodeJump(std::string etiquete);
+        Node* findNodeJump(std::string const& etiquette);
         bool there_is_loop;
     public:
         explicit DFSTree(std::string file_name);
