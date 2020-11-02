@@ -16,7 +16,7 @@ class FileStore {
    
         //Función: inserta el nombre de un archivo
         //y ordena los nombres de forma descendente
-        void pushFile(std::string);
+        void pushFile(std::string const& file_name);
    
         //Función: devuelve el último nombre de archivo
         //y lo remueve del vector de nombres de archivos

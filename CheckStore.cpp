@@ -8,7 +8,7 @@ void CheckStore::printResults() const {
     }
 }
 
-void CheckStore::addCheck(std::string const name, std::string const result) {
+void CheckStore::addCheck(std::string const& name, std::string const& result) {
     std::string nuevo = name + " " + result;
     this->resultados.push_back(nuevo);
 }

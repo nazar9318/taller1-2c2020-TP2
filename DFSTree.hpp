@@ -13,7 +13,7 @@ class DFSTree {
         Node* findNodeJump(std::string const& etiquette);
         bool there_is_loop;
     public:
-        explicit DFSTree(std::string file_name);
+        explicit DFSTree(std::string& file_name);
   
         //Función: indica si se encontró un loop
         //en las instrucciones del archivo con el

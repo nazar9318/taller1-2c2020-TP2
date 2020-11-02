@@ -17,7 +17,7 @@ class CheckStore {
     
         //Función: concatena nombre de archivo y resultado de chequeo,
         //luego lo agrega al vector de resultados
-        void addCheck(std::string const name, std::string const result);
+        void addCheck(std::string const& name, std::string const& result);
     
         ~CheckStore();
 };
