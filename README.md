@@ -55,3 +55,5 @@ Fecha de entrega: 03/11/2020
 		los joinea e imprime los resultados por pantalla.
 		
 # Diagrama de ejecución
+
+![DiagramaTP2](https://github.com/nazar9318/taller1-2c2020-TP2/blob/master/assets/DiagramaTP2.png)
