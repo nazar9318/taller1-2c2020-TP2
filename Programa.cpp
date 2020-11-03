@@ -1,7 +1,7 @@
 #include "Programa.hpp"
 
 Programa::Programa(int argc, char* argv[]) {
-    this->cantidad_hilos = atoi(argv[1]);
+    this->cantidad_hilos = strtol(argv[1], (char**)NULL, 10);
     for (int i = 2; i < argc; i++) {
         this->files.pushFile((std::string)argv[i]);
     }
