@@ -3,13 +3,10 @@
 DFSTree::DFSTree(std::string& file_name) {
     std::ifstream file;
     file.open(file_name);
-    int i = 0;
     while (!file.eof()) {
-        std::string new_line = "";
-        new_line = Parser::getNextLine(file);
+        std::string new_line = Parser::getNextLine(file);
         if (new_line.size() > 0) {
             this->nodos.push_back(new Node(new_line));
-            i++;
         }
     }
     file.close();
@@ -38,13 +35,34 @@ Node* DFSTree::findNodeJump(std::string const& etiquette) {
     return NULL;
 }
 
+void DFSTree::connect(Node* n, size_t s, std::string const &w, size_t i) {
+    if (Parser::isOneArgumentJump(w)) {
+        std::string salto = Parser::getLastWord(w);
+        n->setNextNode(this->findNodeJump(salto));
+    } else if (Parser::isConditionalJump(w)) {
+        std::string salto = Parser::getLastWord(w);
+        n->setNextNode(this->findNodeJump(salto));
+        if (Parser::getInstructionWords(w) == 4) {
+            size_t count = Parser::getWordCount(w) - 1;
+            salto = Parser::getNextWord(w, count);
+            n->setNextNode(this->findNodeJump(salto));
+        } else {
+			if (i+1 < s) {
+			    n->setNextNode(this->nodos[i+1]);
+			}
+        }
+    } else if (i+1 < s) {
+        n->setNextNode(this->nodos[i+1]);
+    }
+}
+
 void DFSTree::setConnections() {
-    std::string word;
     size_t size = this->nodos.size();
     for (unsigned int i = 0; i < size; i++) {
         std::string word = this->nodos[i]->getValue();
         if (!Parser::isReturn(word)) {
-            if (Parser::isOneArgumentJump(word)) {
+            connect(this->nodos[i], size, word, i);
+            /*if (Parser::isOneArgumentJump(word)) {
                 std::string salto = Parser::getLastWord(word);
                 this->nodos[i]->setNextNode(this->findNodeJump(salto));
             } else if (Parser::isConditionalJump(word)) {
@@ -55,13 +73,13 @@ void DFSTree::setConnections() {
                     salto = Parser::getNextWord(word, count);
                     this->nodos[i]->setNextNode(this->findNodeJump(salto));
                 } else {
-			if (i+1 < size) {
-				this->nodos[i]->setNextNode(this->nodos[i+1]);
-			}
+			        if (i+1 < size) {
+				        this->nodos[i]->setNextNode(this->nodos[i+1]);
+			        }
                 }
             } else if (i+1 < size) {
 		        this->nodos[i]->setNextNode(this->nodos[i+1]);
-	        }
+	        }*/
         }
     }
 }
@@ -91,7 +109,7 @@ void DFSTree::walk() {
     }
 }
 
-bool DFSTree::thereIsLoop() {
+bool DFSTree::thereIsLoop() const{
     return this->there_is_loop;
 }
 
@@ -100,3 +118,4 @@ DFSTree::~DFSTree() {
         delete this->nodos[i];
     }
 }
+

@@ -30,8 +30,8 @@ bool Parser::isConditionalJump(std::string const& line) {
     return (Parser::getInstructionWords(line) > 2);
 }
 
-bool Parser::isReturn(std::string const& line) {
-    return (Parser::getInstruction(line).compare("ret") == 0);
+bool Parser::isReturn(std::string const& word) {
+    return (Parser::getInstruction(word).compare("ret") == 0);
 }
 
 std::string Parser::getInstruction(std::string const& line) {

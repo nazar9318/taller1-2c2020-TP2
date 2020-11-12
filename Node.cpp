@@ -1,7 +1,7 @@
 #include "Node.hpp"
 
-Node::Node(std::string const& value) {
-    this->value = value;
+Node::Node(std::string const& value) :
+value(value) {
     this->state = NO_VISITED;
     this->left = NULL;
     this->right = NULL;

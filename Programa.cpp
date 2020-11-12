@@ -1,18 +1,19 @@
 #include "Programa.hpp"
 
-Programa::Programa(int argc, char* argv[]) {
+Programa::Programa(int argc, char* argv[]) : argc(argc), argv(argv) {
     this->cantidad_hilos = strtol(argv[1], (char**)NULL, 10);
-    for (int i = 2; i < argc; i++) {
-        this->files.pushFile((std::string)argv[i]);
-    }
 }
 
 void Programa::ejecutar() {
-    CheckStore checks;
-    std::vector<Checker*> checkers;
     std::mutex mutex;
+    FileStore files(mutex);
+    for (int i = 2; i < argc; i++) {
+        files.pushFile((std::string)argv[i]);
+    }
+    CheckStore checks(mutex);
+    std::vector<Checker*> checkers;
     for (int i = 0; i < this->cantidad_hilos; i++) {
-        checkers.push_back(new Checker(this->files, checks, mutex));
+        checkers.push_back(new Checker(files, checks));
     }
     for (int i = 0; i < this->cantidad_hilos; i++) {
         checkers[i]->start();
@@ -27,3 +28,4 @@ void Programa::ejecutar() {
 }
 
 Programa::~Programa() {}
+

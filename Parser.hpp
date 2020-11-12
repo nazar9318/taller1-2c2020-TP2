@@ -37,7 +37,7 @@ class Parser {
         
         //Función: devuelve verdadero si word es un salto
         //que indica sólo la dirección de salto
-        static bool isOneArgumentJump(std::string const& word);
+        static bool isOneArgumentJump(std::string const& line);
         
         //Función: devuelve verdadero si word es un salto condicional
         //de dos o más argumentos

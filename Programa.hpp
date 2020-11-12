@@ -7,7 +7,8 @@ class Programa {
     private:
         int cantidad_hilos;
         std::vector<std::thread> threads;
-        FileStore files;
+        int argc;
+        char** argv;
     public:
         Programa(int argc, char* argv[]);
 

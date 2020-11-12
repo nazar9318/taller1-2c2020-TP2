@@ -12,7 +12,7 @@ class Node {
         Node* right;
         std::string value;
     public:
-        Node(std::string const& value);
+        explicit Node(std::string const& value);
 
         //Función: 
         void setNextNode(Node* next);

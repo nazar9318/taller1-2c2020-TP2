@@ -9,6 +9,7 @@ class DFSTree {
     private:
         std::vector<Node*> nodos;
         void setConnections();
+        void connect(Node* n, size_t s, std::string const &w, size_t i);
         void step(Node* node);
         Node* findNodeJump(std::string const& etiquette);
         bool there_is_loop;
@@ -18,7 +19,7 @@ class DFSTree {
         //Función: indica si se encontró un loop
         //en las instrucciones del archivo con el
         //que fue construido el árbol
-        bool thereIsLoop();
+        bool thereIsLoop() const;
 
         //Función: indica si hay instrucciones sin usar
         //en el archivo con el que fue construido el árbol

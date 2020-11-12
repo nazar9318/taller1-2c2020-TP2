@@ -1,16 +1,21 @@
 #ifndef CHECK_STORE_H
 #define CHECK_STORE_H
 
+#include "Lock.hpp"
 #include <vector>
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <functional>
+#include <algorithm>
+#include <bits/stdc++.h>
 
 class CheckStore {
     private:
+        std::mutex &mutex;
         std::vector<std::string> resultados;
     public:
-        CheckStore();
+        CheckStore(std::mutex &mutex);
     
         //Función: imprime el contenido del vector de resultados
         void printResults() const;

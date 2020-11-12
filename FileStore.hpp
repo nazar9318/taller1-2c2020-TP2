@@ -7,12 +7,16 @@
 #include <functional>
 #include <algorithm>
 #include <bits/stdc++.h>
+#include "Lock.hpp"
 
 class FileStore {
     private:
+        std::mutex &mutex;
         std::vector<std::string> file_names;
+        //Función: indica si el repositorio está vacío
+        bool isEmpty() const;
     public:
-        FileStore();
+        FileStore(std::mutex &mutex);
    
         //Función: inserta el nombre de un archivo
         //y ordena los nombres de forma descendente
@@ -21,9 +25,6 @@ class FileStore {
         //Función: devuelve el último nombre de archivo
         //y lo remueve del vector de nombres de archivos
         std::string getFile();
-   
-        //Función: indica si el repositorio está vacío
-        bool isEmpty();
         
         ~FileStore();
 };
