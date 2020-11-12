@@ -13,10 +13,8 @@ class FileStore {
     private:
         std::mutex &mutex;
         std::vector<std::string> file_names;
-        //Función: indica si el repositorio está vacío
-        bool isEmpty() const;
     public:
-        FileStore(std::mutex &mutex);
+        explicit FileStore(std::mutex &mutex);
    
         //Función: inserta el nombre de un archivo
         //y ordena los nombres de forma descendente

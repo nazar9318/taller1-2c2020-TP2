@@ -11,7 +11,7 @@ class Lock {
         Lock(Lock&&) = delete;
         Lock& operator=(const Lock&&) = delete;
     public:
-        Lock(std::mutex &mutex);
+        explicit Lock(std::mutex &mutex);
         ~Lock();
 };
 

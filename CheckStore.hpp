@@ -15,7 +15,7 @@ class CheckStore {
         std::mutex &mutex;
         std::vector<std::string> resultados;
     public:
-        CheckStore(std::mutex &mutex);
+        explicit CheckStore(std::mutex &mutex);
     
         //Función: imprime el contenido del vector de resultados
         void printResults() const;
