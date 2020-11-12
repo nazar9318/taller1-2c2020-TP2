@@ -13,10 +13,10 @@ void Checker::run() {
 			result = "FAIL: cycle detected";
 		} else if (!tree.allInstructionsUsed()) {
 			result = "FAIL: unused instructions detected";
-	        } else {
+		} else {
 			result = "GOOD";
-	    	}
-	        this->checks.addCheck(name, result);
+		}
+		this->checks.addCheck(name, result);
 		name = this->files.getFile();
 	}
 }

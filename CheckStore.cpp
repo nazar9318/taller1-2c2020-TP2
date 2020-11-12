@@ -1,6 +1,6 @@
 #include "CheckStore.hpp"
 
-CheckStore::CheckStore(std::mutex &mutex) : mutex(mutex) {}
+CheckStore::CheckStore() {}
 
 void CheckStore::printResults() const {
     for (unsigned int i = 0; i < resultados.size(); i++) {

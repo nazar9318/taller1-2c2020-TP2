@@ -11,10 +11,10 @@
 
 class FileStore {
     private:
-        std::mutex &mutex;
+        std::mutex mutex;
         std::vector<std::string> file_names;
     public:
-        explicit FileStore(std::mutex &mutex);
+        FileStore();
    
         //Función: inserta el nombre de un archivo
         //y ordena los nombres de forma descendente

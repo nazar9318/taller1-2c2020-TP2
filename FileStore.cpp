@@ -1,6 +1,6 @@
 #include "FileStore.hpp"
 
-FileStore::FileStore(std::mutex &mutex) : mutex(mutex) {}
+FileStore::FileStore() {}
 
 void FileStore::pushFile(std::string const& file_name) {
     this->file_names.push_back(file_name);

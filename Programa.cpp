@@ -5,12 +5,11 @@ Programa::Programa(int argc, char* argv[]) : argc(argc), argv(argv) {
 }
 
 void Programa::ejecutar() {
-    std::mutex mutex;
-    FileStore files(mutex);
+    FileStore files;
     for (int i = 2; i < argc; i++) {
         files.pushFile((std::string)argv[i]);
     }
-    CheckStore checks(mutex);
+    CheckStore checks;
     std::vector<Checker*> checkers;
     for (int i = 0; i < this->cantidad_hilos; i++) {
         checkers.push_back(new Checker(files, checks));
