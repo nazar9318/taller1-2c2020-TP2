@@ -11,6 +11,7 @@ class Node {
         Node* left;
         Node* right;
         std::string value;
+
     public:
         explicit Node(std::string const& value);
 

@@ -13,6 +13,7 @@ class FileStore {
     private:
         std::mutex mutex;
         std::vector<std::string> file_names;
+
     public:
         FileStore();
    

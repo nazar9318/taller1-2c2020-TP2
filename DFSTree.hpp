@@ -2,6 +2,7 @@
 #define DFS_TREE_H
 
 #include <vector>
+#include <string>
 #include "Node.hpp"
 #include "Parser.hpp"
 
@@ -13,8 +14,9 @@ class DFSTree {
         void step(Node* node);
         Node* findNodeJump(std::string const& etiquette);
         bool there_is_loop;
+
     public:
-        explicit DFSTree(std::string& file_name);
+        explicit DFSTree(std::string const& file_name);
   
         //Función: indica si se encontró un loop
         //en las instrucciones del archivo con el

@@ -10,6 +10,7 @@ class Parser {
     private:
         //Función: devuelve verdadero si la línea de código tiene una etiqueta
         static bool hasLabel(std::string const& line);
+
     public:
         Parser();
 
@@ -32,7 +33,7 @@ class Parser {
         //Función: obtiene la cantidad de palabras de line de códidgo
         static size_t getWordCount(std::string const& line);
         
-        //Función: obtiene la cantidad de palabras de line, sin contar la etiqueta
+        //Función: obtiene la cantidad de palabras de line, sin la etiqueta
         static size_t getInstructionWords(std::string const& line);
         
         //Función: devuelve verdadero si word es un salto

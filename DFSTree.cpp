@@ -1,6 +1,6 @@
 #include "DFSTree.hpp"
 
-DFSTree::DFSTree(std::string& file_name) {
+DFSTree::DFSTree(std::string const& file_name) {
     std::ifstream file;
     file.open(file_name);
     while (!file.eof()) {

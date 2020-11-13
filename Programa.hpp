@@ -2,6 +2,8 @@
 #define PROGRAMA_H
 
 #include "Checker.hpp"
+#include <string>
+#include <vector>
 
 class Programa {
     private:
