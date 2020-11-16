@@ -35,24 +35,27 @@ Node* DFSTree::findNodeJump(std::string const& etiquette) {
     return NULL;
 }
 
-void DFSTree::connect(Node* n, size_t s, std::string const &w, size_t i) {
+void DFSTree::connectCondJump(size_t pos, size_t s, std::string const &w) {
+    std::string salto = Parser::getLastWord(w);
+    this->nodos[pos]->setNextNode(this->findNodeJump(salto));
+    if (Parser::getInstructionWords(w) == 4) {
+        size_t count = Parser::getWordCount(w) - 1;
+        salto = Parser::getNextWord(w, count);
+        this->nodos[pos]->setNextNode(this->findNodeJump(salto));
+    } else {
+		if (pos+1 < s) {
+		    this->nodos[pos]->setNextNode(this->nodos[pos+1]);
+		}
+    }
+}
+void DFSTree::connect(size_t pos, size_t s, std::string const &w) {
     if (Parser::isOneArgumentJump(w)) {
         std::string salto = Parser::getLastWord(w);
-        n->setNextNode(this->findNodeJump(salto));
+        this->nodos[pos]->setNextNode(this->findNodeJump(salto));
     } else if (Parser::isConditionalJump(w)) {
-        std::string salto = Parser::getLastWord(w);
-        n->setNextNode(this->findNodeJump(salto));
-        if (Parser::getInstructionWords(w) == 4) {
-            size_t count = Parser::getWordCount(w) - 1;
-            salto = Parser::getNextWord(w, count);
-            n->setNextNode(this->findNodeJump(salto));
-        } else {
-			if (i+1 < s) {
-			    n->setNextNode(this->nodos[i+1]);
-			}
-        }
-    } else if (i+1 < s) {
-        n->setNextNode(this->nodos[i+1]);
+        this->connectCondJump(pos, s, w);
+    } else if (pos+1 < s) {
+        this->nodos[pos]->setNextNode(this->nodos[pos+1]);
     }
 }
 
@@ -61,25 +64,7 @@ void DFSTree::setConnections() {
     for (unsigned int i = 0; i < size; i++) {
         std::string word = this->nodos[i]->getValue();
         if (!Parser::isReturn(word)) {
-            connect(this->nodos[i], size, word, i);
-            /*if (Parser::isOneArgumentJump(word)) {
-                std::string salto = Parser::getLastWord(word);
-                this->nodos[i]->setNextNode(this->findNodeJump(salto));
-            } else if (Parser::isConditionalJump(word)) {
-                std::string salto = Parser::getLastWord(word);
-                this->nodos[i]->setNextNode(this->findNodeJump(salto));
-                if (Parser::getInstructionWords(word) == 4) {
-                    size_t count = Parser::getWordCount(word) - 1;
-                    salto = Parser::getNextWord(word, count);
-                    this->nodos[i]->setNextNode(this->findNodeJump(salto));
-                } else {
-			        if (i+1 < size) {
-				        this->nodos[i]->setNextNode(this->nodos[i+1]);
-			        }
-                }
-            } else if (i+1 < size) {
-		        this->nodos[i]->setNextNode(this->nodos[i+1]);
-	        }*/
+            connect(i, size, word);
         }
     }
 }

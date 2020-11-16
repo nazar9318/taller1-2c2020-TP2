@@ -10,7 +10,8 @@ class DFSTree {
     private:
         std::vector<Node*> nodos;
         void setConnections();
-        void connect(Node* n, size_t s, std::string const &w, size_t i);
+        void connect(size_t pos, size_t s, std::string const &w);
+        void connectCondJump(size_t pos, size_t s, std::string const &w);
         void step(Node* node);
         Node* findNodeJump(std::string const& etiquette);
         bool there_is_loop;

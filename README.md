@@ -13,6 +13,7 @@ Fecha de entrega: 03/11/2020
 		respectiva validación. Recibe ambos por parámetro y los deposita en un
 		vector de string. También es capaz de imprimir toda su lista de nombre
 		de archivo más el resultado, por pantalla.
+		Cada vez que se va a depositar un resultado realiza un bloqueo con el mutex
 
 - FileStore:
 		Contiene los nombres de los archivos a ser abiertos para validar,
@@ -20,6 +21,7 @@ Fecha de entrega: 03/11/2020
 		ordena de forma descendente la lista de nombres totales; luego, cuando
 		se le pide un archivo devuelve, si la lista no está vacía, el último
 		miembro de la lista, que es el de menor orden alfabético.
+		Cada vez que se va a retirar un resultado realiza un bloqueo con el mutex
 
 - Parser:
 		Es la clase que se encarga de parsear los archivos. Puede devolver
@@ -53,7 +55,12 @@ Fecha de entrega: 03/11/2020
 		de hilos indicada en el llamado del programa por consola, crea un FileStore
 		y un CheckStore, luego hace correr los hilos y, cuando estos terminan,
 		los joinea e imprime los resultados por pantalla.
-		
+
+- Lock:
+		Permite implementar la protección de recursos respetando el RAII,
+		su constructor recibe una referencia a un mutex, y en el mismo
+		llama al método lock() del mutex, luego su destructor implementa el unlock()
+
 # Diagrama de ejecución
 
 ![DiagramaTP2](https://github.com/nazar9318/taller1-2c2020-TP2/blob/master/assets/DiagramaTP2.png)

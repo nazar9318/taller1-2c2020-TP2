@@ -9,7 +9,7 @@ void FileStore::pushFile(std::string const& file_name) {
 
 std::string FileStore::getFile() {
 	Lock lock(this->mutex);
-    std::string name = "";
+	std::string name = "";
 	if (this->file_names.size() > 0) {
 		name = this->file_names.back();
 		this->file_names.pop_back();
