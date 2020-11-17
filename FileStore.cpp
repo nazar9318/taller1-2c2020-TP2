@@ -4,7 +4,6 @@ FileStore::FileStore() {}
 
 void FileStore::pushFile(std::string const& file_name) {
     this->file_names.push_back(file_name);
-    sort(file_names.begin(), file_names.end(), std::greater<std::string>());
 }
 
 std::string FileStore::getFile() {
