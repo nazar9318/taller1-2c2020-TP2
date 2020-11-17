@@ -5,6 +5,7 @@ Alumno: Federico Elías
 Padrón: 96105
 
 Fecha de entrega: 03/11/2020
+Fecha de reentrega: 17/11/2020
 
 # División de responsabilidades:
 
